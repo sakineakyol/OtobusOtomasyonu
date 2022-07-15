@@ -130,6 +130,7 @@ namespace OtobusOtomasyonu
             this.btnIptal.TabIndex = 5;
             this.btnIptal.Text = "İPTAL";
             this.btnIptal.UseVisualStyleBackColor = true;
+            this.btnIptal.Click += new System.EventHandler(this.btnIptal_Click);
             // 
             // btnTmm
             // 
@@ -141,6 +142,7 @@ namespace OtobusOtomasyonu
             this.btnTmm.TabIndex = 6;
             this.btnTmm.Text = "TAMAM";
             this.btnTmm.UseVisualStyleBackColor = true;
+            this.btnTmm.Click += new System.EventHandler(this.btnTmm_Click);
             // 
             // KayitFormu
             // 
@@ -171,14 +173,14 @@ namespace OtobusOtomasyonu
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtIsim;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtSoyisim;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.MaskedTextBox mskTelefon;
-        private System.Windows.Forms.RadioButton rdErkek;
-        private System.Windows.Forms.RadioButton rdKadin;
         private System.Windows.Forms.Button btnIptal;
         private System.Windows.Forms.Button btnTmm;
+        public System.Windows.Forms.TextBox txtIsim;
+        public System.Windows.Forms.TextBox txtSoyisim;
+        public System.Windows.Forms.MaskedTextBox mskTelefon;
+        public System.Windows.Forms.RadioButton rdErkek;
+        public System.Windows.Forms.RadioButton rdKadin;
     }
 }

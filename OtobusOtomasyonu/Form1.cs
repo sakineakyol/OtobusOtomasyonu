@@ -80,9 +80,16 @@ namespace OtobusOtomasyonu
                     koltuk.Text = koltukNo.ToString();
                     koltukNo++;
                     koltuk.ContextMenuStrip = contextMenuStrip1;
+                    koltuk.MouseDown += Koltuk_MouseDown;
                     this.Controls.Add(koltuk);
                 }
             }
+        }
+        Button tiklanan;
+        private void Koltuk_MouseDown(object sender, MouseEventArgs e)
+        {
+            tiklanan = sender as Button;
+            
         }
 
         private void tsmRezerveEt_Click(object sender, EventArgs e)
@@ -95,7 +102,37 @@ namespace OtobusOtomasyonu
                 return; // return içersinde bulunduğu metodu sonlandırır. return kullanınca else yazmadım
             }
             KayitFormu kayitFormu = new KayitFormu();
-            kayitFormu.ShowDialog(); //Show ile açınca arka planda herhangi bir formu kitlemez. Show dialog ise arkada kalan formu kitler
+            DialogResult sonuc = kayitFormu.ShowDialog();
+            // kayitFormu.ShowDialog(); //Show ile açınca arka planda herhangi bir formu kitlemez. Show dialog ise arkada kalan formu kitler
+            if (sonuc == DialogResult.OK)
+            {
+                ListViewItem lvi = new ListViewItem();
+                lvi.Text = string.Format("{0} {1}", kayitFormu.txtIsim.Text, kayitFormu.txtSoyisim.Text);
+                lvi.SubItems.Add(kayitFormu.mskTelefon.Text);
+                if (kayitFormu.rdErkek.Checked)
+                {
+                    lvi.SubItems.Add("Erkek");
+                    tiklanan.BackColor = Color.Navy;
+                    tiklanan.ForeColor = Color.White;
+                }
+                if (kayitFormu.rdKadin.Checked)
+                {
+                    lvi.SubItems.Add("Kadın");
+                    tiklanan.BackColor = Color.Pink;
+                    tiklanan.ForeColor = Color.Black;
+                }
+                lvi.SubItems.Add(cmbNereden.Text);
+                lvi.SubItems.Add(cmbNereye.Text);
+                lvi.SubItems.Add(tiklanan.Text);
+                lvi.SubItems.Add(dtpTarih.Text);
+                lvi.SubItems.Add(nudFiyat.Value.ToString());
+                listView1.Items.Add(lvi);
+               
+            }
+            else if (sonuc == DialogResult.Cancel)
+            {
+
+            }
         }
     }
 }

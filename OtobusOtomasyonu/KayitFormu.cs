@@ -16,5 +16,17 @@ namespace OtobusOtomasyonu
         {
             InitializeComponent();
         }
+
+        private void btnIptal_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
+
+        private void btnTmm_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
     }
 }
